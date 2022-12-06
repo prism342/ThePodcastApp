@@ -15,6 +15,8 @@ struct EpisodeDetailView: View {
         VStack(){
             Text(episodeDetailViewModel.episode.title).font(.title)
             Text(episodeDetailViewModel.episode.description).font(.subheadline)
+            Button("Play", action: {() -> Void in
+                print("play button onclick")})
         }.navigationBarTitle("Episode Detail")
         .navigationBarTitleDisplayMode(.large)
         .onAppear() {

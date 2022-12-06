@@ -16,9 +16,11 @@ struct PodcastDetailView: View {
             Text(podcastDetailViewModel.podcast.title).font(.title)
             Text(podcastDetailViewModel.podcast.description).font(.subheadline)
             List(podcastDetailViewModel.episodes) { episode in
-                VStack(alignment: .leading) {
-                    Text(episode.title).font(.title)
-                    Text(episode.description).font(.subheadline)
+                NavigationLink(destination: EpisodeDetailView(episodeID: episode.id)){
+                    VStack(alignment: .leading) {
+                        Text(episode.title).font(.title)
+                        Text(episode.description).font(.subheadline)
+                    }
                 }
             }
         }.navigationBarTitle("Podcast Detail")
