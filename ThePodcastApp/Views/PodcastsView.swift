@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PodcastsView: View {
     @ObservedObject private var podcastsViewModel = PodcastsViewModel()
-    
+
     var body: some View {
         List(podcastsViewModel.podcasts) { podcast in
             VStack(alignment: .leading) {
@@ -18,7 +18,7 @@ struct PodcastsView: View {
                 Text(podcast.description).font(.subheadline)
             }
         }.navigationBarTitle("Podcasts")
-        .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
         .onAppear() {
             self.podcastsViewModel.fetchData()
         }

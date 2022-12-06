@@ -22,7 +22,7 @@ struct PodcastDetailView: View {
                 }
             }
         }.navigationBarTitle("Podcast Detail")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onAppear() {
             self.podcastDetailViewModel.fetchData(podcastID:podcastID)
         }

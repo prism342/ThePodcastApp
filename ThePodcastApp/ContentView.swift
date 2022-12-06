@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            PodcastDetailView(podcastID: "q7eHUoO4noRtmwVrbOpO")
+            EpisodeDetailView(episodeID: "22Pwv3oFdg13MndnEOOl")
         }
     }
 }
