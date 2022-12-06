@@ -8,21 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var podcastsViewModel = PodcastsViewModel()
-
     var body: some View {
         NavigationView {
-            List(podcastsViewModel.podcasts) { podcast in
-                VStack(alignment: .leading) {
-                    Text(podcast.title).font(.title)
-                    Text(podcast.description).font(.subheadline)
-                }
-            }.navigationBarTitle("Podcasts")
-            .onAppear() {
-                self.podcastsViewModel.fetchData()
-            }
+            PodcastDetailView(podcastID: "q7eHUoO4noRtmwVrbOpO")
         }
-        .padding()
     }
 }
 

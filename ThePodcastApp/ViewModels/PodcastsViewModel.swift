@@ -22,11 +22,12 @@ class PodcastsViewModel: ObservableObject {
             }
             
             self.podcasts = documents.map { (queryDocumentSnapshot) -> Podcast in
+                let docID = queryDocumentSnapshot.documentID
                 let data = queryDocumentSnapshot.data()
                 let title = data["title"] as? String ?? ""
                 let description = data["description"] as? String ?? ""
                 let imageUrl = data["imageUrl"] as? String ?? ""
-                return Podcast(title: title, description: description, imageUrl: imageUrl)
+                return Podcast(id:docID, title: title, description: description, imageUrl: imageUrl)
             }
         }
     }

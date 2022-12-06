@@ -8,7 +8,7 @@
 import Foundation
 
 struct Podcast: Identifiable {
-    var id: String = UUID().uuidString
+    var id: String
     var title: String
     var description: String
     var imageUrl: String
