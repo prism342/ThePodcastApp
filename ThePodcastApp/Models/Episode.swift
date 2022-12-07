@@ -12,7 +12,7 @@ struct Episode: Identifiable {
     var podcastID: String 
     var title: String
     var description: String
-    var imageUrl: String
+    var timestamp: Int 
     var audioUrl: String
 }
 

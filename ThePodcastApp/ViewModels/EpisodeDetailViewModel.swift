@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 class EpisodeDetailViewModel: ObservableObject {
-    @Published var episode = Episode(id:"", podcastID:"", title: "", description: "", imageUrl: "", audioUrl: "")
+    @Published var episode = Episode(id:"", podcastID:"", title: "", description: "", timestamp: 0, audioUrl: "")
     
     private var db = Firestore.firestore()
     
@@ -21,9 +21,9 @@ class EpisodeDetailViewModel: ObservableObject {
             let podcastID = data?["podcastID"] as? String ?? ""
             let title = data?["title"] as? String ?? ""
             let description = data?["description"] as? String ?? ""
-            let imageUrl = data?["imageUrl"] as? String ?? ""
+            let timestamp = data?["timestamp"] as? Int ?? 0
             let audioUrl = data?["audioUrl"] as? String ?? ""
-            self.episode = Episode(id: docID, podcastID: podcastID, title: title, description: description, imageUrl: imageUrl, audioUrl: audioUrl)
+            self.episode = Episode(id: docID, podcastID: podcastID, title: title, description: description, timestamp: timestamp, audioUrl: audioUrl)
         }
     }
 }

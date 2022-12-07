@@ -12,7 +12,7 @@ struct EpisodeDetailView: View {
     @ObservedObject private var episodeDetailViewModel = EpisodeDetailViewModel()
     
     var body: some View {
-        VStack(){
+        List {
             Text(episodeDetailViewModel.episode.title).font(.title)
             Text(episodeDetailViewModel.episode.description).font(.subheadline)
             Button("Play", action: {() -> Void in
