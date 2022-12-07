@@ -9,18 +9,36 @@ import SwiftUI
 
 struct EpisodeDetailView: View {
     var episodeID: String
+    @State var isPlaying: Bool = false
+    
     @ObservedObject private var episodeDetailViewModel = EpisodeDetailViewModel()
     
     var body: some View {
         VStack(){
             Text(episodeDetailViewModel.episode.title).font(.title)
             Text(episodeDetailViewModel.episode.description).font(.subheadline)
-            Button("Play", action: {() -> Void in
-                print("play button onclick")})
+            Button(action: {() -> Void in
+                AudioPlayer.set(episode: episodeDetailViewModel.episode)
+                isPlaying = AudioPlayer.isPlaying(episode: episodeDetailViewModel.episode)
+                
+                if ( isPlaying ) {
+                    AudioPlayer.pause()
+                } else {
+                    AudioPlayer.play()
+                }
+                isPlaying = !isPlaying
+            }, label: {
+                Image(isPlaying ? "pause" : "play")
+            })
+            .buttonStyle(.plain)
+            .frame(width: 100, height: 100)
+            
         }.navigationBarTitle("Episode Detail")
         .navigationBarTitleDisplayMode(.large)
         .onAppear() {
-            self.episodeDetailViewModel.fetchData(episodeID: episodeID)
+            self.episodeDetailViewModel.fetchData(episodeID: episodeID, completion: { () in
+                isPlaying = AudioPlayer.isPlaying(episode: episodeDetailViewModel.episode)
+            })
         }
     }
 }

@@ -13,7 +13,7 @@ class EpisodeDetailViewModel: ObservableObject {
     
     private var db = Firestore.firestore()
     
-    func fetchData(episodeID: String) {
+    func fetchData(episodeID: String, completion: @escaping () -> ()) {
         db.collection("episodes").document(episodeID).addSnapshotListener {
             (documentSnapshot, error) in
             let docID = documentSnapshot?.documentID ?? ""
@@ -24,6 +24,7 @@ class EpisodeDetailViewModel: ObservableObject {
             let imageUrl = data?["imageUrl"] as? String ?? ""
             let audioUrl = data?["audioUrl"] as? String ?? ""
             self.episode = Episode(id: docID, podcastID: podcastID, title: title, description: description, imageUrl: imageUrl, audioUrl: audioUrl)
+            completion()
         }
     }
 }
