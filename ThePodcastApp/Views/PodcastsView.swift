@@ -10,6 +10,8 @@ import SwiftUI
 
 struct PodcastsView: View {
     @ObservedObject private var podcastsViewModel = PodcastsViewModel()
+    @State var isPlaying: Bool = false
+    @State var ongoingEpisode: Episode? = AudioPlayer.getOngoingEpisode()
 
     var body: some View {
         VStack(){
@@ -31,18 +33,36 @@ struct PodcastsView: View {
                     }.frame(height: 100)
                 }
             }
-            HStack(){
-                VStack(){
-                    Text("Now playing").font(.title2)
-                    Text("Podcast title placeholder").font(.title3)
+            if ongoingEpisode != nil {
+                HStack(){
+                    VStack(){
+                        Text("Now playing").font(.title2)
+                        Text(ongoingEpisode!.title).font(.title3)
+                    }
+                    Button(action: {() -> Void in
+                        isPlaying = AudioPlayer.isPlaying()
+                        
+                        if ( isPlaying ) {
+                            AudioPlayer.pause()
+                        } else {
+                            AudioPlayer.play()
+                        }
+                        isPlaying = !isPlaying
+                    }, label: {
+                        Image(isPlaying ? "pause" : "play")
+                    })
+                    .buttonStyle(.plain)
+                    .frame(width: 100, height: 100)
                 }
-                Button("Play", action: {() -> Void in
-                    print("play button onclick")})
             }
         }.navigationBarTitle("Podcasts")
             .navigationBarTitleDisplayMode(.large)
         .onAppear() {
             self.podcastsViewModel.fetchData()
+            ongoingEpisode = AudioPlayer.getOngoingEpisode()
+            if ( ongoingEpisode != nil ) {
+                isPlaying = AudioPlayer.isPlaying(episode: ongoingEpisode!)
+            }
         }
     }
 }
