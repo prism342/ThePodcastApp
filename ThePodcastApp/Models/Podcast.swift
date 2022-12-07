@@ -12,4 +12,5 @@ struct Podcast: Identifiable {
     var title: String
     var description: String
     var imageUrl: String
+    var rank: Int
 }

@@ -27,8 +27,9 @@ class PodcastsViewModel: ObservableObject {
                 let title = data["title"] as? String ?? ""
                 let description = data["description"] as? String ?? ""
                 let imageUrl = data["imageUrl"] as? String ?? ""
-                return Podcast(id:docID, title: title, description: description, imageUrl: imageUrl)
-            }.sorted(by: {$0.title < $1.title})
+                let rank = data["rank"] as? Int ?? 1000
+                return Podcast(id:docID, title: title, description: description, imageUrl: imageUrl, rank: rank)
+            }.sorted(by: {$0.rank < $1.rank})
         }
     }
 }
