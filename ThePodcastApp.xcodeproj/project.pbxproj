@@ -24,6 +24,7 @@
 		1A4240E8293F98CA00AAA073 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4240E7293F98CA00AAA073 /* Episode.swift */; };
 		1A4240EA293F991600AAA073 /* PodcastsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4240E9293F991600AAA073 /* PodcastsViewModel.swift */; };
 		97BB59F62940EFBA00319D49 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BB59F52940EFBA00319D49 /* AudioPlayer.swift */; };
+		97F445CF2941540600209E63 /* NotificationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F445CE2941540600209E63 /* NotificationGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		1A4240E9293F991600AAA073 /* PodcastsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsViewModel.swift; sourceTree = "<group>"; };
 		97BB59F32940E5BD00319D49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		97BB59F52940EFBA00319D49 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		97F445CD294141E000209E63 /* ThePodcastApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThePodcastApp.entitlements; sourceTree = "<group>"; };
+		97F445CE2941540600209E63 /* NotificationGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,7 @@
 		1A4240C9293F8D9C00AAA073 /* ThePodcastApp */ = {
 			isa = PBXGroup;
 			children = (
+				97F445CD294141E000209E63 /* ThePodcastApp.entitlements */,
 				97BB59F42940EFA300319D49 /* Helpers */,
 				97BB59F32940E5BD00319D49 /* Info.plist */,
 				1A3056A3293FD2E300B5893D /* Views */,
@@ -135,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				97BB59F52940EFBA00319D49 /* AudioPlayer.swift */,
+				97F445CE2941540600209E63 /* NotificationGenerator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 			files = (
 				1A3056B1293FE5E700B5893D /* EpisodeDetailViewModel.swift in Sources */,
 				1A4240CD293F8D9C00AAA073 /* ContentView.swift in Sources */,
+				97F445CF2941540600209E63 /* NotificationGenerator.swift in Sources */,
 				1A4240EA293F991600AAA073 /* PodcastsViewModel.swift in Sources */,
 				1A4240E6293F98B600AAA073 /* Podcast.swift in Sources */,
 				1A3056AD293FDECF00B5893D /* SubscribedPodcastsViewModel.swift in Sources */,
@@ -354,6 +360,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ThePodcastApp/ThePodcastApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePodcastApp/Preview Content\"";
@@ -383,6 +390,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ThePodcastApp/ThePodcastApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePodcastApp/Preview Content\"";

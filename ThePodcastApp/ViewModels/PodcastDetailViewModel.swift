@@ -91,12 +91,17 @@ class PodcastDetailViewModel: ObservableObject {
                 
         let userDataRef = db.collection("userData").document(deviceID)
         
+        var notificationMessage: String?
         if (self.subscribed == false){
             userDataRef.updateData(["subscribedPodcastIDs": FieldValue.arrayUnion([self.podcast.id])])
+            notificationMessage = "You've subscribed to \(self.podcast.title)"
             self.subscribed = true
         } else {
             userDataRef.updateData(["subscribedPodcastIDs": FieldValue.arrayRemove([self.podcast.id])])
+            notificationMessage = "You've unsubscribed from \(self.podcast.title)"
             self.subscribed = false
         }
+        
+        NotificationGenerator.generateNotification(title: "Subscription", description: notificationMessage!)
     }
 }
