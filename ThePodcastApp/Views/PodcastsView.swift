@@ -35,9 +35,9 @@ struct PodcastsView: View {
             }
             if ongoingEpisode != nil {
                 HStack(){
-                    VStack(){
-                        Text("Now playing").font(.title2)
-                        Text(ongoingEpisode!.title).font(.title3)
+                    VStack(alignment: .leading, spacing: 6){
+                        Text("Now playing").font(.title3)
+                        Text(ongoingEpisode!.title).font(.system(size: 16))
                     }
                     Button(action: {() -> Void in
                         isPlaying = AudioPlayer.isPlaying()
@@ -54,6 +54,8 @@ struct PodcastsView: View {
                     .buttonStyle(.plain)
                     .frame(width: 100, height: 100)
                 }
+                .frame(maxWidth: .infinity)
+                .background(Color(UIColor(red: 0.914, green: 0.910, blue: 0.910, alpha: 1.0)).clipShape(RoundedRectangle(cornerRadius:20)))
             }
         }.navigationBarTitle("Podcasts")
             .navigationBarTitleDisplayMode(.large)

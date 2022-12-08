@@ -17,22 +17,24 @@ struct EpisodeDetailView: View {
         List {
             Text(episodeDetailViewModel.episode.title).font(.title)
             Text(episodeDetailViewModel.episode.description).font(.subheadline)
-            Button(action: {() -> Void in
-                AudioPlayer.set(episode: episodeDetailViewModel.episode)
-                isPlaying = AudioPlayer.isPlaying(episode: episodeDetailViewModel.episode)
-                
-                if ( isPlaying ) {
-                    AudioPlayer.pause()
-                } else {
-                    AudioPlayer.play()
-                }
-                isPlaying = !isPlaying
-            }, label: {
-                Image(isPlaying ? "pause" : "play")
-            })
-            .buttonStyle(.plain)
-            .frame(width: 100, height: 100)
-            
+            HStack() {
+                Button(action: {() -> Void in
+                    AudioPlayer.set(episode: episodeDetailViewModel.episode)
+                    isPlaying = AudioPlayer.isPlaying(episode: episodeDetailViewModel.episode)
+                    
+                    if ( isPlaying ) {
+                        AudioPlayer.pause()
+                    } else {
+                        AudioPlayer.play()
+                    }
+                    isPlaying = !isPlaying
+                }, label: {
+                    Image(isPlaying ? "pause" : "play")
+                })
+                .buttonStyle(.plain)
+                .frame(width: 100, height: 100)
+            }
+            .frame(maxWidth: .infinity)
         }.navigationBarTitle("Episode Detail")
         .navigationBarTitleDisplayMode(.large)
         .onAppear() {
